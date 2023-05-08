@@ -42,7 +42,7 @@ button {
   background-color: var(--color-primary-darken-1);
 }
 
-.secondary {
+.secondary:hover {
   background-color: var(--color-secondary-lighten-3);
 }
 </style>
