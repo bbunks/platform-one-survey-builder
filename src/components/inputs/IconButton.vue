@@ -29,7 +29,7 @@ export default {
   </button>
 </template>
 
-<style>
+<style scoped>
 button {
   display: flex;
   padding: 8px;
@@ -38,8 +38,16 @@ button {
   border-radius: 1000px;
 }
 
+.primary {
+  color: var(--color-secondary-darken-4);
+}
+
 .primary:hover {
   background-color: var(--color-primary-darken-1);
+}
+
+.secondary {
+  color: var(--color-secondary-darken-2);
 }
 
 .secondary:hover {

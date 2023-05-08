@@ -7,6 +7,7 @@ html {
   --color-primary-lighten-4: #fff8e8;
   --color-primary-base: #ffb81c;
   --color-primary-darken-1: #faa200;
+  --color-primary-darken-2: #f09000;
 
   /* Secondary Color */
   --color-secondary-lighten-4: #f3f5fa;
@@ -15,6 +16,7 @@ html {
   --color-secondary-lighten-1: #56687e;
   --color-secondary-base: #748499;
   --color-secondary-darken-2: #3b5169;
+  --color-secondary-darken-3: #2f4058;
   --color-secondary-darken-4: #232f46;
 
   /* Status */
