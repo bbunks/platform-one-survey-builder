@@ -1,0 +1,22 @@
+html {
+  /* Basics */
+  --color-background: #ffffff;
+  --color-basic-white: #ffffff;
+
+  /* Primaryt Color */
+  --color-primary-lighten-4: #fff8e8;
+  --color-primary-base: #ffb81c;
+  --color-primary-darken-1: #faa200;
+
+  /* Secondary Color */
+  --color-secondary-lighten-4: #f3f5fa;
+  --color-secondary-lighten-3: #ebedf2;
+  --color-secondary-lighten-2: #dee2eb;
+  --color-secondary-lighten-1: #56687e;
+  --color-secondary-base: #748499;
+  --color-secondary-darken-2: #3b5169;
+  --color-secondary-darken-4: #232f46;
+
+  /* Status */
+  --color-status-warning: #e26812;
+}
