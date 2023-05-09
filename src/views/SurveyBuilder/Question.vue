@@ -1,18 +1,11 @@
 <script setup lang="ts">
 import Badge from "../../components/Badge.vue";
 import DirectionsUpsideDown from "@/components/icons/DirectionsUpsideDown.vue";
-import DotsVertical from "@/components/icons/DotsVertical.vue";
 import ListMulti from "@/components/icons/ListMulti.vue";
-import IconButton from "@/components/inputs/IconButton.vue";
-import Plus from "@/components/icons/Plus.vue";
-import ListHeader from "@/components/icons/ListHeader.vue";
-import Edit from "@/components/icons/Edit.vue";
-import EyeOutline from "@/components/icons/EyeOutline.vue";
-import Delete from "@/components/icons/Delete.vue";
-import { reactive, defineProps, type PropType } from "vue";
+import { defineProps, type PropType } from "vue";
+import TableRow from "./TableRow.vue";
 
-const state = reactive({ hovered: false, selected: false });
-const { question } = defineProps({
+defineProps({
   question: {
     type: Object as PropType<Question>,
     req: true,
@@ -24,17 +17,10 @@ const { question } = defineProps({
     default: () => {},
   },
 });
-
-function mouseEnter() {
-  state.hovered = true;
-}
-function mouseLeave() {
-  state.hovered = false;
-}
 </script>
 
 <template>
-  <div class="container" @mouseenter="mouseEnter" @mouseleave="mouseLeave">
+  <TableRow :onDelete="onDelete">
     <div class="row" style="justify-content: space-between">
       <div class="row">
         <div class="bigIconContainer">
@@ -46,7 +32,7 @@ function mouseLeave() {
               <p>Q{{ index + 1 }}</p>
               <div class="status warning" />
             </div>
-            <p class="question">{{ question?.question }}</p>
+            <p class="question">{{ question.question }}</p>
           </div>
           <div class="row" v-if="question.logic.length > 0">
             <div class="iconContainer dark">
@@ -61,27 +47,8 @@ function mouseLeave() {
           </div>
         </div>
       </div>
-
-      <div class="row" v-if="state.hovered">
-        <IconButton variation="secondary"><Plus /></IconButton>
-        <IconButton variation="secondary"><ListHeader /></IconButton>
-        <IconButton variation="secondary"><Edit /></IconButton>
-        <IconButton variation="secondary"><DirectionsUpsideDown /></IconButton>
-        <IconButton variation="secondary"><EyeOutline /></IconButton>
-        <IconButton variation="secondary" @click="() => onDelete()">
-          <Delete />
-        </IconButton>
-      </div>
     </div>
-    <div class="fixedSize">
-      <IconButton variation="secondary">
-        <DotsVertical />
-      </IconButton>
-    </div>
-    <div class="fixedSize">
-      <input type="checkbox" v-model="state.selected" />
-    </div>
-  </div>
+  </TableRow>
 </template>
 
 <style scoped>
@@ -163,15 +130,5 @@ function mouseLeave() {
   grid-template-columns: 1fr 40px 40px;
   gap: 20px;
   border-radius: var(--border-radius-medium);
-}
-
-.container:hover {
-  background-color: var(--color-secondary-lighten-4);
-}
-
-.fixedSize {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 </style>
