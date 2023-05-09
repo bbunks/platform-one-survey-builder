@@ -6,6 +6,7 @@ export default {
     variation: {
       type: String as PropType<"primary" | "secondary">,
     },
+    id: String,
   },
   computed: {
     // checks the variation is valid. if it is, returns it, else returns primary
@@ -23,7 +24,7 @@ export default {
 </script>
 
 <template>
-  <button :class="className">
+  <button :id="id" :class="className">
     <slot />
   </button>
 </template>

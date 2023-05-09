@@ -6,6 +6,7 @@ import { reactive } from "vue";
 import IconButton from "@/components/inputs/IconButton.vue";
 import EndPage from "./EndPage.vue";
 import Table from "./Table.vue";
+import Plus from "@/components/icons/Plus.vue";
 
 function onSizeUpdate(size: string) {
   console.log(size);
@@ -52,23 +53,13 @@ const data = reactive({
     },
   ],
 });
-
-function deleteQuestionAtIndex(index: number) {
-  console.log("deleting question", index);
-  data.questions.splice(index, 1);
-}
-
-function deletePageAtIndex(index: number) {
-  console.log("deleting pages", index);
-  data.pages.splice(index, 1);
-}
 </script>
 
 <template>
   <ToolBars :onSizeUpdate="onSizeUpdate" />
   <Divider />
   <div class="scrollContainer">
-    <Table v-model="data.questions">
+    <Table id="questions" v-model="data.questions">
       <template #title>
         <h2 class="thinTitle">Questions</h2>
       </template>
@@ -78,24 +69,33 @@ function deletePageAtIndex(index: number) {
           :question="element"
           :index="index"
           :toggle="toggle"
+          :id="`questionRow${index}`"
         />
       </template>
     </Table>
-    <Table v-model="data.pages">
+    <Table id="endPages" v-model="data.pages">
       <template #title>
-        <h2 class="boldTitle">End Pages</h2>
-        <IconButton variation="secondary">
-          <Plus />
-        </IconButton>
+        <div class="row">
+          <h2 class="boldTitle">End Pages</h2>
+          <IconButton variation="secondary">
+            <Plus />
+          </IconButton>
+        </div>
       </template>
       <template #item="{ element, index, toggle, onDelete }">
-        <EndPage :endPage="element" :onDelete="onDelete" :toggle="toggle" />
+        <EndPage
+          :endPage="element"
+          :onDelete="onDelete"
+          :toggle="toggle"
+          :id="`endPageRow${index}`"
+        />
       </template>
     </Table>
   </div>
 </template>
 
-<style>
+<style scoped>
+@import url("./styles.css");
 .scrollContainer {
   position: relative;
   align-self: stretch;

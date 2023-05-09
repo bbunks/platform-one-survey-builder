@@ -9,6 +9,7 @@ import draggable from "vuedraggable";
 import Delete from "@/components/icons/Delete.vue";
 
 const props = defineProps({
+  id: String,
   modelValue: { type: Array },
   deleteQuestionAtIndex: {
     type: Function as PropType<(index: number) => void>,
@@ -26,7 +27,6 @@ const tableItems = computed({
     emit("update:modelValue", value);
   },
 });
-const tableId = computed(() => crypto.randomUUID());
 
 let selectedIndexes = ref<number[]>([]);
 
@@ -52,19 +52,23 @@ function deleteQuestionAtIndex(index: number) {
 </script>
 
 <template>
-  <div class="container">
+  <div :id="`${id}Title`" class="container">
     <div class="title">
       <slot name="title">Table</slot>
     </div>
     <div class="fixedSize">
       <ContextMenu>
         <template #button="{ toggleMenu }">
-          <IconButton variation="secondary" @click="toggleMenu">
+          <IconButton id="bulkAction" variation="secondary" @click="toggleMenu">
             <DotsVertical />
           </IconButton>
         </template>
         <template #menu>
-          <Button variation="secondary" @click="deleteSelected">
+          <Button
+            id="deleteSelected"
+            variation="secondary"
+            @click="deleteSelected"
+          >
             <Delete /> Delete Selected
           </Button>
         </template>
@@ -72,6 +76,7 @@ function deleteQuestionAtIndex(index: number) {
     </div>
   </div>
   <draggable
+    :id="`${id}Items`"
     v-model="tableItems"
     item-key="id"
     style="gap: inherit; display: flex; flex-direction: column"

@@ -22,11 +22,17 @@ defineProps({
     type: Function as PropType<() => void>,
     default: () => {},
   },
+  id: String,
+  elementId: Number,
 });
 </script>
 
 <template>
-  <div :class="`container ${selected ? 'selected' : ''}`">
+  <div
+    :id="id"
+    :data-id="elementId"
+    :class="`container ${selected ? 'selected' : ''}`"
+  >
     <div class="row" style="justify-content: space-between; position: relative">
       <slot />
 
@@ -41,7 +47,11 @@ defineProps({
         <IconButton variation="secondary"><Edit /></IconButton>
         <IconButton variation="secondary"><DirectionsUpsideDown /></IconButton>
         <IconButton variation="secondary"><EyeOutline /></IconButton>
-        <IconButton variation="secondary" @click="() => onDelete()">
+        <IconButton
+          id="deleteRow"
+          variation="secondary"
+          @click="() => onDelete()"
+        >
           <Delete />
         </IconButton>
       </div>

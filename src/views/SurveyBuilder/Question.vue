@@ -20,11 +20,17 @@ defineProps({
     type: Function as PropType<() => void>,
     default: () => {},
   },
+  id: String,
 });
 </script>
 
 <template>
-  <TableRow :onDelete="onDelete" :toggle="toggle">
+  <TableRow
+    :id="id"
+    :elementId="question.id"
+    :onDelete="onDelete"
+    :toggle="toggle"
+  >
     <div class="row" style="justify-content: space-between">
       <div class="row">
         <div class="bigIconContainer">
