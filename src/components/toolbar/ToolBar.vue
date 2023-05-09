@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import Button from "../inputs/Button.vue";
-</script>
-
 <template>
   <div class="container">
     <slot />

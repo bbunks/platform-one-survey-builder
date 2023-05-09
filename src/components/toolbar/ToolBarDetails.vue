@@ -21,7 +21,6 @@ import IconButton from "../inputs/IconButton.vue";
   display: flex;
   align-items: center;
   gap: 8px;
-
   flex-grow: 0;
   z-index: 0;
 }

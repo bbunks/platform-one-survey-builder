@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import ToolBar from "@/components/toolbar/ToolBar.vue";
-import ToolbarDetails from "@/components/toolbar/ToolbarDetails.vue";
+import ToolbarDetails from "@/components/toolbar/ToolBarDetails.vue";
 import Group from "@/components/toolbar/Group.vue";
 import Button from "@/components/inputs/Button.vue";
 import RadioButtonGroup from "@/components/inputs/RadioButtonGroup.vue";
