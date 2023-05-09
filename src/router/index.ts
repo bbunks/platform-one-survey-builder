@@ -12,7 +12,7 @@ const router = createRouter({
     {
       path: "/survey-builder",
       name: "survey-builder",
-      component: () => import("../views/SurveyBuilder.vue"),
+      component: () => import("../views/SurveyBuilder/index.vue"),
     },
   ],
 });

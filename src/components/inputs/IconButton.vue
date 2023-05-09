@@ -1,8 +1,5 @@
 <script lang="ts">
 export default {
-  data() {
-    return {};
-  },
   props: {
     variation: {
       type: String,
