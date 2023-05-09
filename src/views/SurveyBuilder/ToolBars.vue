@@ -28,11 +28,11 @@ const options = ["min", "max"];
   <ToolBar>
     <Group>
       <RadioButtonGroup :options="options" @optionChange="onSizeUpdate">
-        <template v-slot:one>
+        <template v-slot:min>
           <ArrowCollapseVertical />
           Min
         </template>
-        <template v-slot:two>
+        <template v-slot:max>
           <ArrowExpandVertical />
           Max
         </template>

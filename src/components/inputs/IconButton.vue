@@ -1,8 +1,10 @@
 <script lang="ts">
+import type { PropType } from "vue";
+
 export default {
   props: {
     variation: {
-      type: String,
+      type: String as PropType<"primary" | "secondary">,
     },
   },
   computed: {
@@ -43,11 +45,19 @@ button {
   background-color: var(--color-primary-darken-1);
 }
 
+.primary:active {
+  background-color: var(--color-primary-darken-2);
+}
+
 .secondary {
   color: var(--color-secondary-darken-2);
 }
 
 .secondary:hover {
   background-color: var(--color-secondary-lighten-3);
+}
+
+.secondary:active {
+  background-color: var(--color-secondary-lighten-4);
 }
 </style>

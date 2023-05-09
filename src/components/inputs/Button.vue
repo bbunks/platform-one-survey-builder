@@ -1,11 +1,13 @@
 <script lang="ts">
+import type { PropType } from "vue";
+
 export default {
   data() {
     return {};
   },
   props: {
     variation: {
-      type: String,
+      type: String as PropType<"primary" | "secondary" | "tertiary">,
     },
   },
   computed: {

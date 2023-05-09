@@ -27,7 +27,7 @@ export default {
 
 <template>
   <div class="buttonGroup">
-    <div class="button" v-for="(option, i) in options">
+    <div class="button" v-for="(option, i) in options" key="{{ inputName+i }}">
       <input
         type="radio"
         name="inputName"
