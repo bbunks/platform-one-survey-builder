@@ -52,6 +52,8 @@ defineProps({
 </template>
 
 <style scoped>
+@import url("./styles.css");
+
 .status {
   position: absolute;
   bottom: 0;
@@ -67,40 +69,13 @@ defineProps({
 .warning {
   background: var(--color-status-warning);
 }
+
 .question {
   color: var(--color-secondary-darken-4);
   font-style: normal;
   font-weight: 400;
   font-size: 17px;
   line-height: 32px;
-}
-
-.row {
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  gap: 16px;
-}
-
-.column {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.iconContainer {
-  position: relative;
-  display: flex;
-  width: 32px;
-  height: 32px;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 0;
-  border-radius: 1000px;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 24px;
 }
 
 .light {
@@ -111,17 +86,6 @@ defineProps({
 .dark {
   color: var(--color-basic-white);
   background-color: var(--color-secondary-base);
-}
-
-.bigIconContainer {
-  background: var(--color-secondary-lighten-4);
-  border: 1px solid var(--color-secondary-base);
-  border-radius: 8px;
-  width: 48px;
-  height: 48px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .container {

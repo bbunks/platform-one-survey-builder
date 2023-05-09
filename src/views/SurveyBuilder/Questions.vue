@@ -41,6 +41,7 @@ const data = reactive({ drag: false });
     @start="data.drag = true"
     @end="data.drag = false"
     item-key="{{ question.id + question.question }}"
+    style="gap: inherit; display: flex; flex-direction: column"
   >
     <template #item="{ element, index }">
       <Question
@@ -53,28 +54,11 @@ const data = reactive({ drag: false });
 </template>
 
 <style scoped>
-.container {
-  padding: 12px 16px;
-  display: grid;
-  grid-template-columns: 1fr 40px 40px;
-  gap: 20px;
-  border-radius: var(--border-radius-medium);
-}
-
-.container:hover {
-  background-color: var(--color-secondary-lighten-4);
-}
-
+@import url("./styles.css");
 .title {
   font-style: normal;
   font-weight: 400;
   font-size: 22px;
   line-height: 32px;
-}
-
-.fixedSize {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 </style>

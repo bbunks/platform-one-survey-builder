@@ -36,21 +36,5 @@ defineProps({
 </template>
 
 <style scoped>
-.row {
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  gap: 16px;
-}
-
-.bigIconContainer {
-  background: var(--color-secondary-lighten-4);
-  border: 1px solid var(--color-secondary-base);
-  border-radius: 8px;
-  width: 48px;
-  height: 48px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+@import url("./styles.css");
 </style>

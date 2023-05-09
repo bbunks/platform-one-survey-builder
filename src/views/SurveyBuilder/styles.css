@@ -1,0 +1,58 @@
+.container {
+  padding: 12px 16px;
+  display: grid;
+  grid-template-columns: 1fr 40px 40px;
+  gap: 20px;
+  border-radius: var(--border-radius-medium);
+}
+
+.container:hover {
+  background-color: var(--color-secondary-lighten-4);
+}
+
+.fixedSize {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bigIconContainer {
+  background: var(--color-secondary-lighten-4);
+  border: 1px solid var(--color-secondary-base);
+  border-radius: 8px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 16px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.iconContainer {
+  position: relative;
+  display: flex;
+  width: 32px;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 0;
+  border-radius: 1000px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
+}

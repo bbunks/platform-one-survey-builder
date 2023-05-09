@@ -81,5 +81,7 @@ function deletePageAtIndex(index: number) {
   overflow: scroll;
   padding: 24px 88px;
   gap: 4px;
+  display: flex;
+  flex-direction: column;
 }
 </style>

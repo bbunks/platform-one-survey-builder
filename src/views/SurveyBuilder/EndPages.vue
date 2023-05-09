@@ -58,28 +58,12 @@ const data = reactive({ drag: false });
 </template>
 
 <style scoped>
-.container {
-  padding: 12px 16px;
-  display: grid;
-  grid-template-columns: 1fr 40px 40px;
-  gap: 20px;
-  border-radius: var(--border-radius-medium);
-}
-
-.container:hover {
-  background-color: var(--color-secondary-lighten-4);
-}
+@import url("./styles.css");
 
 .title {
   font-style: normal;
   font-weight: 700;
   font-size: 17px;
   line-height: 32px;
-}
-
-.fixedSize {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 </style>

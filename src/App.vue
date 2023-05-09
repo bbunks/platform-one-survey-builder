@@ -15,7 +15,6 @@ import Sidebar from "./components/sidebar/SideBar.vue";
 .content {
   max-height: 100%;
   flex-grow: 1;
-  /* overflow-y: scroll; */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
