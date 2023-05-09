@@ -8,11 +8,17 @@ import Edit from "@/components/icons/Edit.vue";
 import EyeOutline from "@/components/icons/EyeOutline.vue";
 import Delete from "@/components/icons/Delete.vue";
 import { ref, type PropType } from "vue";
+import ContextMenu from "@/components/hoc/ContextMenu.vue";
+import Button from "@/components/inputs/Button.vue";
 
 let selected = ref(false);
 
 defineProps({
   onDelete: {
+    type: Function as PropType<() => void>,
+    default: () => {},
+  },
+  toggle: {
     type: Function as PropType<() => void>,
     default: () => {},
   },
@@ -42,13 +48,18 @@ defineProps({
     </div>
     <div class="fixedSize">
       <ContextMenu>
-        <IconButton variation="secondary">
-          <DotsVertical />
-        </IconButton>
+        <template #button="{ toggleMenu }">
+          <IconButton variation="secondary" @click="toggleMenu">
+            <DotsVertical />
+          </IconButton>
+        </template>
+        <template #menu>
+          <Button variation="secondary">Some Actions</Button>
+        </template>
       </ContextMenu>
     </div>
     <div class="fixedSize">
-      <input type="checkbox" v-model="selected" />
+      <input type="checkbox" v-model="selected" :onclick="toggle" />
     </div>
   </div>
 </template>

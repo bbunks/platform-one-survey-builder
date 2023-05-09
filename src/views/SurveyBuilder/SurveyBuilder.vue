@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import Divider from "@/components/shared/Divider.vue";
 import ToolBars from "./ToolBars.vue";
-import Questions from "./Questions.vue";
-import EndPages from "./EndPages.vue";
-import { reactive, watch } from "vue";
+import Question from "./Question.vue";
+import { reactive } from "vue";
+import IconButton from "@/components/inputs/IconButton.vue";
+import EndPage from "./EndPage.vue";
+import Table from "./Table.vue";
 
 function onSizeUpdate(size: string) {
   console.log(size);
@@ -66,16 +68,36 @@ function deletePageAtIndex(index: number) {
   <ToolBars :onSizeUpdate="onSizeUpdate" />
   <Divider />
   <div class="scrollContainer">
-    <Questions
-      v-model="data.questions"
-      :deleteQuestionAtIndex="deleteQuestionAtIndex"
-    />
-    <EndPages v-model="data.pages" :deletePageAtIndex="deletePageAtIndex" />
+    <Table v-model="data.questions">
+      <template #title>
+        <h2 class="thinTitle">Questions</h2>
+      </template>
+      <template #item="{ element, index, toggle, onDelete }">
+        <Question
+          :onDelete="onDelete"
+          :question="element"
+          :index="index"
+          :toggle="toggle"
+        />
+      </template>
+    </Table>
+    <Table v-model="data.pages">
+      <template #title>
+        <h2 class="boldTitle">End Pages</h2>
+        <IconButton variation="secondary">
+          <Plus />
+        </IconButton>
+      </template>
+      <template #item="{ element, index, toggle, onDelete }">
+        <EndPage :endPage="element" :onDelete="onDelete" :toggle="toggle" />
+      </template>
+    </Table>
   </div>
 </template>
 
 <style>
 .scrollContainer {
+  position: relative;
   align-self: stretch;
   flex-grow: 1;
   overflow: scroll;
@@ -83,5 +105,20 @@ function deletePageAtIndex(index: number) {
   gap: 4px;
   display: flex;
   flex-direction: column;
+}
+
+.thinTitle {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 32px;
+  z-index: 10;
+}
+
+.boldTitle {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 32px;
 }
 </style>

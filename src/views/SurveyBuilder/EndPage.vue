@@ -14,11 +14,15 @@ defineProps({
     type: Function as PropType<() => void>,
     default: () => {},
   },
+  toggle: {
+    type: Function as PropType<() => void>,
+    default: () => {},
+  },
 });
 </script>
 
 <template>
-  <TableRow :onDelete="onDelete">
+  <TableRow :onDelete="onDelete" :toggle="toggle">
     <div class="row" style="justify-content: space-between">
       <div class="row">
         <div class="bigIconContainer">

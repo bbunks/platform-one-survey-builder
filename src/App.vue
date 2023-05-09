@@ -18,5 +18,6 @@ import Sidebar from "./components/sidebar/SideBar.vue";
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  position: relative;
 }
 </style>

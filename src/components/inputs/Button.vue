@@ -43,6 +43,7 @@ button {
   font-weight: 600;
   font-size: 14px;
   line-height: 16px;
+  white-space: nowrap;
   border-radius: var(--border-radius-large);
 }
 
