@@ -3,13 +3,13 @@ import Divider from "@/components/Divider.vue";
 import ToolBars from "./ToolBars.vue";
 import Questions from "./Questions.vue";
 import EndPages from "./EndPages.vue";
-import { reactive } from "vue";
+import { reactive, watch } from "vue";
 
 function onSizeUpdate(size: string) {
   console.log(size);
 }
 
-const { pages, questions } = reactive({
+const data = reactive({
   pages: [
     {
       id: 1,
@@ -53,12 +53,12 @@ const { pages, questions } = reactive({
 
 function deleteQuestionAtIndex(index: number) {
   console.log("deleting question", index);
-  questions.splice(index, 1);
+  data.questions.splice(index, 1);
 }
 
 function deletePageAtIndex(index: number) {
   console.log("deleting pages", index);
-  pages.splice(index, 1);
+  data.pages.splice(index, 1);
 }
 </script>
 
@@ -67,10 +67,10 @@ function deletePageAtIndex(index: number) {
   <Divider />
   <div class="scrollContainer">
     <Questions
-      :questions="questions"
+      v-model="data.questions"
       :deleteQuestionAtIndex="deleteQuestionAtIndex"
     />
-    <EndPages :pages="pages" :deletePageAtIndex="deletePageAtIndex" />
+    <EndPages v-model="data.pages" :deletePageAtIndex="deletePageAtIndex" />
   </div>
 </template>
 

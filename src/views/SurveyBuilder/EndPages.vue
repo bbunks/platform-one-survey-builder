@@ -3,10 +3,11 @@ import DotsVertical from "@/components/icons/DotsVertical.vue";
 import IconButton from "@/components/inputs/IconButton.vue";
 import EndPage from "./EndPage.vue";
 import Plus from "@/components/icons/Plus.vue";
-import type { PropType } from "vue";
+import { reactive, type PropType, computed } from "vue";
+import draggable from "vuedraggable";
 
-const { pages } = defineProps({
-  pages: {
+const props = defineProps({
+  modelValue: {
     type: Array as PropType<EndPage[]>,
     default: [],
   },
@@ -15,12 +16,23 @@ const { pages } = defineProps({
     default: () => {},
   },
 });
-defineEmits(["update:pages"]);
+const emit = defineEmits(["update:modelValue"]);
+
+const pages = computed({
+  get() {
+    return props.modelValue;
+  },
+  set(value) {
+    emit("update:modelValue", value);
+  },
+});
+
+const data = reactive({ drag: false });
 </script>
 
 <template>
   <div class="container">
-    <div style="display: flex">
+    <div style="display: flex; gap: 16px">
       <h2 class="title">End Pages</h2>
       <IconButton variation="secondary">
         <Plus />
@@ -32,12 +44,17 @@ defineEmits(["update:pages"]);
       </IconButton>
     </div>
   </div>
-  <EndPage
-    v-for="(page, i) in pages"
-    key="{{page.name + i}}"
-    :endPage="page"
-    :onDelete="() => deletePageAtIndex(i)"
-  />
+  <draggable
+    v-model="pages"
+    group="people"
+    @start="data.drag = true"
+    @end="data.drag = false"
+    item-key="{{page.name + index}}"
+  >
+    <template #item="{ element, index }">
+      <EndPage :endPage="element" :onDelete="() => deletePageAtIndex(index)" />
+    </template>
+  </draggable>
 </template>
 
 <style scoped>

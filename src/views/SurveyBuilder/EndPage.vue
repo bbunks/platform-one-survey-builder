@@ -12,7 +12,7 @@ import Delete from "@/components/icons/Delete.vue";
 import { reactive, defineProps, type PropType } from "vue";
 
 const state = reactive({ hovered: false, selected: false });
-const { endPage } = defineProps({
+const props = defineProps({
   endPage: {
     type: Object as PropType<EndPage>,
     req: true,
@@ -40,8 +40,11 @@ function mouseLeave() {
           <ListMulti />
         </div>
         <div class="row">
-          <p class="question">{{ endPage.name }}</p>
-          <Badge v-for="flag in endPage.flags" key="{{ endPage.Name + flag }}">
+          <p class="question">{{ props.endPage.name }}</p>
+          <Badge
+            v-for="flag in props.endPage.flags"
+            key="{{ endPage.Name + flag }}"
+          >
             {{ flag }}
           </Badge>
         </div>

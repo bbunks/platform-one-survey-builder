@@ -2,15 +2,29 @@
 import DotsVertical from "@/components/icons/DotsVertical.vue";
 import IconButton from "@/components/inputs/IconButton.vue";
 import Question from "./Question.vue";
-import type { PropType } from "vue";
+import { reactive, type PropType, computed } from "vue";
+import draggable from "vuedraggable";
 
-const { questions } = defineProps({
-  questions: { type: Array as PropType<Question[]> },
+const props = defineProps({
+  modelValue: { type: Array as PropType<Question[]> },
   deleteQuestionAtIndex: {
     type: Function as PropType<(index: number) => void>,
     default: () => {},
   },
 });
+const emit = defineEmits(["update:modelValue"]);
+
+const questions = computed({
+  get() {
+    return props.modelValue;
+  },
+  set(value) {
+    console.log(value);
+    emit("update:modelValue", value);
+  },
+});
+
+const data = reactive({ drag: false });
 </script>
 
 <template>
@@ -22,13 +36,20 @@ const { questions } = defineProps({
       </IconButton>
     </div>
   </div>
-  <Question
-    v-for="(question, i) in questions"
-    key="{{ question.id + question.question }}"
-    :onDelete="() => deleteQuestionAtIndex(i)"
-    :question="question"
-    :index="i"
-  />
+  <draggable
+    v-model="questions"
+    @start="data.drag = true"
+    @end="data.drag = false"
+    item-key="{{ question.id + question.question }}"
+  >
+    <template #item="{ element, index }">
+      <Question
+        :onDelete="() => deleteQuestionAtIndex(index)"
+        :question="element"
+        :index="index"
+      />
+    </template>
+  </draggable>
 </template>
 
 <style scoped>
