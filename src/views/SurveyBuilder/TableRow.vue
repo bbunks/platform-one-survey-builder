@@ -9,30 +9,18 @@ import EyeOutline from "@/components/icons/EyeOutline.vue";
 import Delete from "@/components/icons/Delete.vue";
 import { ref, type PropType } from "vue";
 
-let hovered = ref(false);
 let selected = ref(false);
 
-const props = defineProps({
+defineProps({
   onDelete: {
     type: Function as PropType<() => void>,
     default: () => {},
   },
 });
-
-function mouseEnter() {
-  hovered.value = true;
-}
-function mouseLeave() {
-  hovered.value = false;
-}
 </script>
 
 <template>
-  <div
-    :class="`container ${selected ? 'selected' : ''}`"
-    @mouseenter="mouseEnter"
-    @mouseleave="mouseLeave"
-  >
+  <div :class="`container ${selected ? 'selected' : ''}`">
     <div class="row" style="justify-content: space-between; position: relative">
       <slot />
 
@@ -41,7 +29,7 @@ function mouseLeave() {
         I would normally work with a designer on this. I made this decision because
         it would cause the question text to jump around which felt extremely clunky.
        -->
-      <div class="row stuckRight" v-if="hovered && !selected">
+      <div :class="`row stuckRight ${!selected ? 'showWithHover' : 'hidden'}`">
         <IconButton variation="secondary"><Plus /></IconButton>
         <IconButton variation="secondary"><ListHeader /></IconButton>
         <IconButton variation="secondary"><Edit /></IconButton>
@@ -53,9 +41,11 @@ function mouseLeave() {
       </div>
     </div>
     <div class="fixedSize">
-      <IconButton variation="secondary">
-        <DotsVertical />
-      </IconButton>
+      <ContextMenu>
+        <IconButton variation="secondary">
+          <DotsVertical />
+        </IconButton>
+      </ContextMenu>
     </div>
     <div class="fixedSize">
       <input type="checkbox" v-model="selected" />
@@ -65,17 +55,27 @@ function mouseLeave() {
 
 <style scoped>
 @import url("./styles.css");
+
 .stuckRight {
   position: absolute;
   right: 0;
   background-color: var(--color-secondary-lighten-4);
+  padding: 4px;
+  border-radius: var(--border-radius-small);
 }
-
 .selected {
   background-color: var(--color-primary-lighten-4);
 }
 
 .selected:hover {
   background-color: var(--color-primary-lighten-4) !important;
+}
+
+.showWithHover {
+  display: var(--actions-display);
+}
+
+.hidden {
+  display: none;
 }
 </style>

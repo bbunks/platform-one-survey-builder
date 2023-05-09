@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Badge from "../Badge.vue";
+import Badge from "../shared/Badge.vue";
 import DotsHorizontal from "../icons/DotsHorizontal.vue";
 import LeftArrow from "../icons/LeftArrow.vue";
 import Translate from "../icons/Translate.vue";

@@ -4,10 +4,12 @@
   grid-template-columns: 1fr 40px 40px;
   gap: 20px;
   border-radius: var(--border-radius-medium);
+  --actions-display: none;
 }
 
 .container:hover {
   background-color: var(--color-secondary-lighten-4);
+  --actions-display: flex;
 }
 
 .fixedSize {

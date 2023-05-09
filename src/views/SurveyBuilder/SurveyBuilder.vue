@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Divider from "@/components/Divider.vue";
+import Divider from "@/components/shared/Divider.vue";
 import ToolBars from "./ToolBars.vue";
 import Questions from "./Questions.vue";
 import EndPages from "./EndPages.vue";

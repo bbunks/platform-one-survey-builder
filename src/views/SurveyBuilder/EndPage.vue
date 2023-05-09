@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Badge from "../../components/Badge.vue";
+import Badge from "../../components/shared/Badge.vue";
 import ListMulti from "@/components/icons/ListMulti.vue";
 import { defineProps, type PropType } from "vue";
 import TableRow from "./TableRow.vue";
